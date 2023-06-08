@@ -3,6 +3,8 @@ using API.Helpers;
 using API.Interfaces;
 using API.Services;
 using API.SignalR;
+using EmailService;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Extensions
@@ -28,7 +30,15 @@ namespace API.Extensions
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
-            
+
+            var emailConfig = config.GetSection("EmailConfiguration")
+                .Get<EmailConfiguration>();
+            services.AddSingleton(emailConfig);
+            services.AddScoped<IEmailSender, EmailSender>();
+
+            services.Configure<DataProtectionTokenProviderOptions>(opt =>
+                opt.TokenLifespan=TimeSpan.FromHours(2));
+
             return services;
         }
     }

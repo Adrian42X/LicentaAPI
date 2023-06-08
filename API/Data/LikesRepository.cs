@@ -40,7 +40,7 @@ namespace API.Data
             var likedUsers = users.Select(user => new LikeDto
             {
                 UserName = user.UserName,
-                KnownAs = user.KnowAs,
+                KnowAs = user.KnowAs,
                 Age = user.DateOfBirth.CalculateAge(),
                 PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain).Url,
                 City = user.City,

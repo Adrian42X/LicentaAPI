@@ -15,11 +15,12 @@ namespace API.Extensions
             services.AddIdentityCore<AppUser>(opt =>
             {
                 opt.Password.RequireNonAlphanumeric = false;
+                opt.User.RequireUniqueEmail=true;
             })
+                .AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider)
                 .AddRoles<AppRole>()
                 .AddRoleManager<RoleManager<AppRole>>()
                 .AddEntityFrameworkStores<DataContext>();
-
 
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

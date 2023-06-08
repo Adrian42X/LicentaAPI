@@ -5,7 +5,6 @@ namespace API.Entities
 {
     public class AppUser : IdentityUser<int>
     {
-
         public DateOnly DateOfBirth { get; set; }
 
         public string KnowAs { get; set; }
