@@ -7,6 +7,7 @@ using EmailService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace API.Extensions
 {
     public static class ApplicationServiceExtensions
@@ -16,7 +17,7 @@ namespace API.Extensions
         {
             services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlite(config.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(config.GetConnectionString("SqlServerConnection"));
             });
 
             services.AddCors();
