@@ -17,7 +17,7 @@ namespace API.Extensions
         {
             services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlServer(config.GetConnectionString("SqlServerConnection"));
+                options.UseSqlServer(config.GetConnectionString("ProdServerConnection"));
             });
 
             services.AddCors();

@@ -12,7 +12,7 @@ namespace API.Data
         public static async Task SeedUsers(UserManager<AppUser> userManager,
             RoleManager<AppRole> roleManager)
         {
-            if (await userManager.Users.AnyAsync()) return;
+            //if (await userManager.Users.AnyAsync()) return;
 
             var userData = await File.ReadAllTextAsync("Data/UserSeedData.json");
 
